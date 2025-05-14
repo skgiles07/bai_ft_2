@@ -1,4 +1,3 @@
-````markdown
 # Full Guide: Pub Review Sentiment Analyzer - Flan-T5 Fine-tuning & Deployment
 
 This comprehensive guide walks through fine-tuning the `google/flan-t5-small` model to classify pub review sentiment. It covers Hugging Face setup, fine-tuning in a new Google Colab notebook using your ~100 review `pub_reviews.txt` dataset, and deploying the trained LoRA adapter to a Hugging Face Space.
@@ -54,8 +53,6 @@ This token allows your Colab notebook to interact with the Hugging Face Hub.
 
 This will be the very first code cell you run in your new notebook.
 
-* Paste the code below into the cell and run it.
-
 ```python
 # Critical First Cell for Colab Setup
 # Run this cell first, then RESTART THE RUNTIME before proceeding.
@@ -69,19 +66,6 @@ This will be the very first code cell you run in your new notebook.
 
 # Install necessary libraries
 !pip install transformers[sentencepiece] datasets peft accelerate bitsandbytes torch evaluate rouge_score nltk
-
-# Login to Hugging Face Hub using the secret token
-from google.colab import userdata
-from huggingface_hub import login
-
-try:
-    hf_token = userdata.get('HF_TOKEN')
-    login(token=hf_token)
-    print("Successfully logged into Hugging Face Hub!")
-except userdata.SecretNotFoundError:
-    print("HF_TOKEN secret not found. Please add it to Colab secrets.")
-except Exception as e:
-    print(f"An error occurred during Hugging Face login: {e}")
 
 print("\n--- Library installation/upgrade and HF login attempt complete. ---")
 print("IMPORTANT: Please RESTART THE RUNTIME now before running any other cells.")
